@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const jose = require('node-jose');
+const { JWKS, JWK } = require('jose');
 
 module.exports = function skypeSim(...params) {
     return class skypeSim extends require('ut-port-webhook')(...params) {
@@ -22,11 +22,10 @@ module.exports = function skypeSim(...params) {
         handlers() {
             let lastReply;
             let id = 1;
-            let key;
-            const keystore = jose.JWK.createKeyStore();
+            const key = JWK.generateSync('RSA', 2048, {kid: 'skypeSim', use: 'sig'});
+            const keystore = new JWKS.KeyStore([key]);
             return {
                 async start() {
-                    key = await keystore.generate('RSA', 2048, {kid: 'skypeSim', use: 'sig'});
                     this.httpServer.route({
                         method: 'GET',
                         path: '/jwks',
