@@ -32,7 +32,7 @@ module.exports = function skypeSim(...params) {
                         options: {
                             auth: false,
                             handler: async(req, h) => {
-                                return h.response(keystore.toJSON());
+                                return h.response(keystore.toJWKS());
                             }
                         }
                     });
