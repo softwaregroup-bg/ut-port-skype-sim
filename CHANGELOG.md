@@ -1,3 +1,12 @@
+## [7.2.1](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.2.0...v7.2.1) (2021-04-10)
+
+
+### Bug Fixes
+
+* use proper method name ([f9f2585](https://github.com/softwaregroup-bg/ut-port-skype-sim/commit/f9f25851e3ab9e9f7f1cd765d025109e505d3ed5))
+
+
+
 # [7.2.0](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.1.0...v7.2.0) (2021-04-09)
 
 
