@@ -1,6 +1,6 @@
 {
     "name": "ut-port-skype-sim",
-    "version": "7.2.2",
+    "version": "7.2.3",
     "main": "index.js",
     "dependencies": {
         "jsonwebtoken": "8.5.0",

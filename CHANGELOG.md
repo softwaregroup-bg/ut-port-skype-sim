@@ -1,3 +1,12 @@
+## [7.2.3](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.2.2...v7.2.3) (2021-04-13)
+
+
+### Bug Fixes
+
+* k8s port ([626b689](https://github.com/softwaregroup-bg/ut-port-skype-sim/commit/626b689ba373e7f50c53fa35423dd3310a3c6ae5))
+
+
+
 ## [7.2.2](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.2.1...v7.2.2) (2021-04-10)
 
 
