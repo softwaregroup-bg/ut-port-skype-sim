@@ -4,7 +4,7 @@
     "main": "index.js",
     "dependencies": {
         "jsonwebtoken": "8.5.0",
-        "jose": "2.0.3",
+        "jose": "2.0.5",
         "ut-port-webhook": "^8.0.5"
     },
     "devDependencies": {
