@@ -9,6 +9,7 @@ module.exports = function skypeSim(...params) {
                 path: '/apis/v3/conversations/{conversationId}/activities/{activityId?}',
                 hook: 'botSim.skypeFlow',
                 mode: 'reply',
+                async: false,
                 server: {
                     port: 8180
                 },
