@@ -1,3 +1,12 @@
+## [7.2.5](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.2.4...v7.2.5) (2022-06-04)
+
+
+### Bug Fixes
+
+* 🎉second anniversary bugfix for ([868b9e2](https://github.com/softwaregroup-bg/ut-port-skype-sim/commit/868b9e270466bcd09e00dbde437b2bee3b96e6ab))
+
+
+
 ## [7.2.4](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.2.3...v7.2.4) (2021-06-30)
 
 
