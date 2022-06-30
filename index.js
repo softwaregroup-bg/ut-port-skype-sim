@@ -1,5 +1,4 @@
-const jwt = require('jsonwebtoken');
-const { JWKS, JWK } = require('jose');
+const { generateKeyPair, exportJWK, SignJWT } = require('jose');
 
 module.exports = function skypeSim(...params) {
     return class skypeSim extends require('ut-port-webhook')(...params) {
@@ -23,17 +22,20 @@ module.exports = function skypeSim(...params) {
         handlers() {
             let lastReply;
             let id = 1;
-            const key = JWK.generateSync('RSA', 2048, {kid: 'skypeSim', use: 'sig'});
-            const keystore = new JWKS.KeyStore([key]);
+            let key;
             return {
                 async start() {
+                    key = await generateKeyPair('RS256', {modulusLength: 2048, extractable: true});
+                    const jwk = {...await exportJWK(key.publicKey), kid: 'skypeSim', use: 'sig'};
                     this.httpServer.route({
                         method: 'GET',
                         path: '/jwks',
                         options: {
                             auth: false,
                             handler: async(req, h) => {
-                                return h.response(keystore.toJWKS());
+                                return h.response({
+                                    keys: [jwk].map(({d, p, q, dp, dq, qi, ...pub}) => pub)
+                                });
                             }
                         }
                     });
@@ -130,19 +132,23 @@ module.exports = function skypeSim(...params) {
                             };
                             break;
                     }
+                    const authorization = 'Bearer ' + await new SignJWT({
+                        serviceurl: body.serviceUrl
+                    })
+                        .setProtectedHeader({
+                            kid: 'skypeSim',
+                            alg: 'RS256'
+                        })
+                        .setIssuedAt()
+                        .setAudience(msg.appId || this.config.appId)
+                        .setExpirationTime('1h')
+                        .setIssuer('https://api.botframework.com')
+                        .sign(key.privateKey);
                     return {
                         url: (msg.appId || this.config.appId) + '/' + (msg.clientId || this.config.clientId),
                         body,
                         headers: {
-                            authorization: 'Bearer ' + jwt.sign({
-                                serviceurl: body.serviceUrl
-                            }, key.toPEM(true), {
-                                algorithm: 'RS256',
-                                audience: (msg.appId || this.config.appId),
-                                issuer: 'https://api.botframework.com',
-                                keyid: 'skypeSim',
-                                expiresIn: 60 * 60
-                            })
+                            authorization
                         }
                     };
                 },

@@ -3,13 +3,11 @@
     "version": "7.2.5",
     "main": "index.js",
     "dependencies": {
-        "jsonwebtoken": "8.5.0",
-        "jose": "2.0.5",
+        "jose": "4.6.0",
         "ut-port-webhook": "^8.0.5"
     },
     "devDependencies": {
-        "tap": "^16.2.0",
-        "ut-tools": "^6.37.0"
+        "tap": "^16.2.0"
     },
     "peerDependencies": {
         "ut-run": "^10.52.0"
