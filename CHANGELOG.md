@@ -1,3 +1,7 @@
+## [7.2.7](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.2.6...v7.2.7) (2022-12-11)
+
+
+
 ## [7.2.6](https://github.com/softwaregroup-bg/ut-port-skype-sim/compare/v7.2.5...v7.2.6) (2022-06-30)
 
 

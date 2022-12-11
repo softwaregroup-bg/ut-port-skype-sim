@@ -1,6 +1,6 @@
 {
     "name": "ut-port-skype-sim",
-    "version": "7.2.6",
+    "version": "7.2.7",
     "main": "index.js",
     "dependencies": {
         "jose": "4.11.0",
